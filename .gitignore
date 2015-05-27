@@ -37,4 +37,3 @@ compiled
 dist
 lib
 vender
-examples/*/bundle.js
