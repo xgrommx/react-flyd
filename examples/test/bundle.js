@@ -67,9 +67,11 @@ var App = (function (_Component) {
   _createClass(_App, [{
     key: 'render',
     value: function render() {
+      var fullWidth = this.props.width * this.props.cellWidth;
+      var fullHeight = this.props.height * this.props.cellHeight;
       return _react2['default'].createElement(
         'div',
-        { style: { width: this.props.width * this.props.cellWidth } },
+        { style: { width: fullWidth, marginLeft: window.innerWidth / 2 - fullWidth / 2 } },
         _react2['default'].createElement(
           _title2['default'],
           null,
@@ -77,16 +79,16 @@ var App = (function (_Component) {
         ),
         _react2['default'].createElement(
           'svg',
-          { height: this.props.height * this.props.cellHeight, width: this.props.width * this.props.cellWidth },
+          { height: fullHeight, width: fullWidth },
           _react2['default'].createElement(
             'g',
             null,
             _react2['default'].createElement(_grid2['default'], this.props),
             _react2['default'].createElement(_snake2['default'], { unitWidth: this.props.cellWidth, unitHeight: this.props.cellHeight }),
             _react2['default'].createElement(_apple2['default'], { width: this.props.cellWidth, height: this.props.cellHeight }),
-            this.props.isPaused ? _react2['default'].createElement(_pauseScreen2['default'], { height: this.props.height * this.props.cellHeight, width: this.props.width * this.props.cellWidth }) : null,
-            this.props.isAtStart ? _react2['default'].createElement(_startScreen2['default'], { height: this.props.height * this.props.cellHeight, width: this.props.width * this.props.cellWidth }) : null,
-            this.props.isAtEnd ? _react2['default'].createElement(_endScreen2['default'], { height: this.props.height * this.props.cellHeight, width: this.props.width * this.props.cellWidth }) : null
+            this.props.isPaused ? _react2['default'].createElement(_pauseScreen2['default'], { height: fullHeight, width: fullWidth }) : null,
+            this.props.isAtStart ? _react2['default'].createElement(_startScreen2['default'], { height: fullHeight, width: fullWidth }) : null,
+            this.props.isAtEnd ? _react2['default'].createElement(_endScreen2['default'], { height: fullHeight, width: fullWidth }) : null
           )
         ),
         _react2['default'].createElement(_instructions2['default'], null)
@@ -29387,7 +29389,7 @@ function render() {
   var height = window.innerHeight - 200;
   var min = Math.max(Math.min(width, height), 400);
   console.log(width, height);
-  _react2['default'].render(_react2['default'].createElement(_componentsApp2['default'], { streams: streams, cellWidth: min / 20, cellHeight: min / 20 }), document.body);
+  _react2['default'].render(_react2['default'].createElement(_componentsApp2['default'], { streams: streams, cellWidth: min / 20, cellHeight: min / 20 }), document.getElementById('content'));
 }
 
 window.addEventListener('resize', render);
